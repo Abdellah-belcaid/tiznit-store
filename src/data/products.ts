@@ -1,4 +1,5 @@
 // Product catalogue. Prices are demo values in MAD — edit them here.
+// Describe taste, origin and use only: no health or medical claims (law 31-08 on misleading ads, ONSSA labelling rules).
 // `image` points to /public/images; products without a photo get an illustrated jar
 // using `art` (fill = product colour, kind = jar | bottle | small).
 
@@ -63,8 +64,8 @@ export const products: Product[] = [
       fr: "Le miel d'euphorbe (Daghmous) est l'un des miels marocains les plus recherchés. Les abeilles le butinent sur l'euphorbe résinifère des zones arides du Souss. Couleur ambrée, goût intense et une légère sensation piquante en gorge — signe de son authenticité.",
     },
     benefits: {
-      ar: ["مقوٍّ طبيعي للمناعة", "مفيد للحلق والسعال", "غني بمضادات الأكسدة"],
-      fr: ["Booste l'immunité naturellement", "Apaise la gorge et la toux", "Riche en antioxydants"],
+      ar: ["طعم قوي ومميز", "عسل نادر من سوس", "ملعقة في الصباح أو مع مشروب ساخن"],
+      fr: ["Goût intense et typé", "Miel rare du Souss", "Une cuillère le matin ou dans une infusion"],
     },
     sizes: [
       { label: "250g", price: 90 },
@@ -90,8 +91,8 @@ export const products: Product[] = [
       fr: "Récolté sur le thym sauvage et les fleurs épineuses des montagnes de l'Anti-Atlas. Parfum herbacé marqué, texture dense, il cristallise naturellement avec le temps.",
     },
     benefits: {
-      ar: ["مطهر طبيعي", "يساعد على الهضم", "طاقة طبيعية"],
-      fr: ["Antiseptique naturel", "Favorise la digestion", "Énergie naturelle"],
+      ar: ["رائحة الزعتر البري", "قوام كثيف", "يتبلور بشكل طبيعي"],
+      fr: ["Parfum de thym sauvage", "Texture dense", "Cristallise naturellement"],
     },
     sizes: [
       { label: "250g", price: 80 },
@@ -116,8 +117,8 @@ export const products: Product[] = [
       fr: "Issu des vergers d'agrumes de la plaine du Souss. Couleur dorée claire, saveur douce et florale. Idéal pour les pâtisseries, les boissons et les tartines.",
     },
     benefits: {
-      ar: ["مهدئ وطبيعي", "مناسب للأطفال", "يساعد على النوم"],
-      fr: ["Doux et apaisant", "Parfait pour les enfants", "Favorise le sommeil"],
+      ar: ["طعم حلو ولطيف", "رائحة زهر الليمون", "مثالي للحلويات والمشروبات"],
+      fr: ["Saveur douce et florale", "Parfum de fleur d'oranger", "Idéal en pâtisserie et boissons"],
     },
     sizes: [
       { label: "250g", price: 50 },
@@ -138,12 +139,12 @@ export const products: Product[] = [
       fr: "Saveur fraîche et mentholée, l'allié de l'hiver pour les voies respiratoires.",
     },
     description: {
-      ar: "عسل داكن بنكهة منعشة مميزة، يُجنى من أشجار الأوكاليبتوس. يُستعمل تقليدياً لتخفيف نزلات البرد والسعال.",
-      fr: "Miel foncé aux notes fraîches et boisées, récolté sur les eucalyptus. Traditionnellement utilisé contre le rhume et la toux.",
+      ar: "عسل داكن بنكهة منعشة مميزة، يُجنى من أشجار الأوكاليبتوس. رفيق مثالي للمشروبات الساخنة في فصل الشتاء.",
+      fr: "Miel foncé aux notes fraîches et boisées, récolté sur les eucalyptus. Parfait avec une boisson chaude en hiver.",
     },
     benefits: {
-      ar: ["يريح الجهاز التنفسي", "مضاد طبيعي للبكتيريا", "مثالي للشتاء"],
-      fr: ["Soulage les voies respiratoires", "Antibactérien naturel", "Idéal en hiver"],
+      ar: ["نكهة منعشة مميزة", "لون داكن وطعم قوي", "مثالي لفصل الشتاء"],
+      fr: ["Notes fraîches et boisées", "Couleur foncée, goût affirmé", "Idéal en hiver"],
     },
     sizes: [
       { label: "500g", price: 90 },
@@ -166,8 +167,8 @@ export const products: Product[] = [
       fr: "Amlou traditionnel préparé à la main avec des amandes torréfiées, de l'huile d'argan pure et du miel naturel. Texture onctueuse, goût inoubliable — à déguster avec du pain beldi ou des msemen.",
     },
     benefits: {
-      ar: ["طاقة طبيعية لليوم كله", "غني بالبروتين", "بدون مواد حافظة"],
-      fr: ["Énergie pour toute la journée", "Riche en protéines", "Sans conservateurs"],
+      ar: ["محضّر يدوياً", "بدون مواد حافظة مضافة", "مثالي لوجبة الفطور"],
+      fr: ["Préparé à la main", "Sans conservateurs ajoutés", "Idéal au petit-déjeuner"],
     },
     sizes: [
       { label: "500g", price: 110 },
@@ -215,8 +216,8 @@ export const products: Product[] = [
       fr: "Amlou préparé avec des cacahuètes torréfiées, de l'huile d'argan et du miel. Délicieux et à petit prix pour toute la famille.",
     },
     benefits: {
-      ar: ["سعر مناسب", "طعم يحبه الصغار", "طاقة وبروتين"],
-      fr: ["Prix doux", "Les enfants adorent", "Énergie & protéines"],
+      ar: ["سعر مناسب", "طعم يحبه الصغار", "مثالي لوجبة الفطور"],
+      fr: ["Prix doux", "Les enfants adorent", "Parfait au petit-déjeuner"],
     },
     sizes: [
       { label: "500g", price: 60 },
@@ -225,6 +226,7 @@ export const products: Product[] = [
     art: { kind: "jar", fill: "#b9803f", lid: "#c0392b" },
   },
   {
+    // Keep "Taliouine" only if the jar carries the official AOP label (law 25-06); otherwise rename to "Safran marocain".
     id: "safran-taliouine",
     category: "saffron",
     name: { ar: "زعفران تالوين", fr: "Safran de Taliouine" },
@@ -234,8 +236,8 @@ export const products: Product[] = [
       fr: "L'or rouge : safran 100% pur de Taliouine, en filaments.",
     },
     description: {
-      ar: "زعفران تالوين من أجود أنواع الزعفران في العالم. خيوط حمراء قانية، تُقطف يدوياً زهرة بزهرة. لون قوي ورائحة عطرية رائعة للطاجين والشاي والحلويات.",
-      fr: "Le safran de Taliouine compte parmi les meilleurs au monde. Filaments rouge vif cueillis à la main, fleur par fleur. Couleur intense et arôme envoûtant pour vos tajines, thés et desserts.",
+      ar: "زعفران تالوين معروف بجودته العالية. خيوط حمراء قانية، تُقطف يدوياً زهرة بزهرة. لون قوي ورائحة عطرية رائعة للطاجين والشاي والحلويات.",
+      fr: "Le safran de Taliouine est réputé pour sa qualité. Filaments rouge vif cueillis à la main, fleur par fleur. Couleur intense et arôme envoûtant pour vos tajines, thés et desserts.",
     },
     benefits: {
       ar: ["خيوط حمراء كاملة", "قطف يدوي", "لون ورائحة قوية"],
@@ -265,8 +267,8 @@ export const products: Product[] = [
       fr: "Huile d'argan alimentaire au goût de noisette grillée, produite par des coopératives féminines du Souss. Parfaite avec le pain, l'amlou et les salades.",
     },
     benefits: {
-      ar: ["غني بفيتامين E", "صحي للقلب", "إنتاج تعاونيات"],
-      fr: ["Riche en vitamine E", "Bon pour le cœur", "Issu de coopératives"],
+      ar: ["طعم الجوز المحمص", "عصر تقليدي", "إنتاج تعاونيات"],
+      fr: ["Goût de noisette grillée", "Pressage traditionnel", "Issu de coopératives"],
     },
     sizes: [
       { label: "250ml", price: 120 },

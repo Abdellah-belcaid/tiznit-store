@@ -236,13 +236,13 @@ Misleading advertising is punished with **50,000–250,000 MAD** (art. 174). The
 
 ## 10. Site changes to make (developer to-do)
 
-- [ ] `/mentions-legales` page (AR + FR): seller name, address, phone, email, RC/ICE, host (Vercel/Cloudflare + address), CNDP receipt n°, data clause (§3.4).
-- [ ] `/cgv` page (AR + FR): products, prices TTC, delivery zones/fees/delays, cash on delivery, 7-day withdrawal (sealed products), refund in 15 days, complaints address, 30-day delivery max.
-- [ ] `/confidentialite` page: data collected, purpose, recipients (seller, delivery, WhatsApp/Meta), retention, rights, contact, CNDP n°.
-- [ ] Footer links to the three pages (art. 30: reachable from the home page).
-- [ ] Basket: **unchecked checkbox** "I accept the CGV and the data notice" + 09-08 short notice + CNDP n°. Block sending until checked.
-- [ ] Show **delivery fee / delay** in basket and product pages.
-- [ ] Reword **health claims** in `src/data/products.ts`.
+- [x] `/mentions-legales` page (AR + FR): seller name, address, phone, email, RC/ICE, host (Vercel/Cloudflare + address), CNDP receipt n°, data clause (§3.4).
+- [x] `/conditions-de-vente` page (AR + FR): products, prices TTC, delivery zones/fees/delays, cash on delivery, 7-day withdrawal (sealed products), refund in 15 days, complaints address, 30-day delivery max.
+- [x] `/confidentialite` page: data collected, purpose, recipients (seller, delivery, WhatsApp/Meta), retention, rights, contact, CNDP n°.
+- [x] Footer links to the three pages (art. 30: reachable from the home page).
+- [x] Basket: **unchecked checkbox** "I accept the CGV and the data notice" + 09-08 short notice + CNDP n°. Block sending until checked.
+- [x] Show **delivery fee / delay** in basket and product pages.
+- [x] Reword **health claims** in `src/data/products.ts`.
 - [ ] Rename saffron unless AOP-certified; add ONSSA n° to product pages if he has one.
 - [ ] WhatsApp **confirmation template** for the seller (art. 32) + printed slip in parcels.
 - [ ] Before adding analytics: cookie banner.

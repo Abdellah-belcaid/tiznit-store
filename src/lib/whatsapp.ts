@@ -26,11 +26,14 @@ export function orderMessage({
   customer = {},
   lang,
   formatPrice,
+  delivery = null,
 }: {
   items: OrderLine[];
   customer?: Customer;
   lang: Lang;
   formatPrice: (n: number) => string;
+  /** Delivery fee, or null when it is confirmed later */
+  delivery?: number | null;
 }) {
   const ar = lang === "ar";
   const total = items.reduce((s, i) => s + i.price * i.qty, 0);
@@ -43,7 +46,12 @@ export function orderMessage({
     lines.push(`• ${i.name} (${i.size}) × ${i.qty} = ${formatPrice(i.price * i.qty)}`);
   });
   lines.push("");
-  lines.push(`${ar ? "المجموع" : "Total"} : ${formatPrice(total)}`);
+  if (delivery === null) {
+    lines.push(`${ar ? "المجموع" : "Total"} : ${formatPrice(total)} ${ar ? "(+ التوصيل)" : "(+ livraison)"}`);
+  } else {
+    lines.push(`${ar ? "التوصيل" : "Livraison"} : ${delivery ? formatPrice(delivery) : ar ? "مجاني" : "offerte"}`);
+    lines.push(`${ar ? "المجموع" : "Total"} : ${formatPrice(total + delivery)}`);
+  }
 
   const info = (
     [

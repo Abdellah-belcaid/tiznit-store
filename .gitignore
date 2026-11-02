@@ -9,3 +9,4 @@ dist
 # tooling
 .vercel
 .claude/
+client-docs/

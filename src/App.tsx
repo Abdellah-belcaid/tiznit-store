@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Product from "./pages/Product";
 import About from "./pages/About";
+import Legal from "./pages/Legal";
+import { legalPaths, type LegalId } from "./data/legal";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,6 +31,9 @@ export default function App() {
           <Route path="/boutique" element={<Shop />} />
           <Route path="/produit/:id" element={<Product />} />
           <Route path="/a-propos" element={<About />} />
+          {(Object.keys(legalPaths) as LegalId[]).map((id) => (
+            <Route key={id} path={legalPaths[id]} element={<Legal id={id} />} />
+          ))}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

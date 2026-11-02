@@ -5,13 +5,14 @@ import { useLang } from "../lib/i18n";
 import { config, telHref } from "../lib/config";
 import { waLink } from "../lib/whatsapp";
 import { categories } from "../data/products";
+import { legalPaths, type LegalId } from "../data/legal";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "./Icons";
 
 export default function Footer() {
   const { t, tr } = useLang();
   return (
     <footer className="honeycomb relative mt-24 bg-plum-900 text-cream-200">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo light />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream-200/75">{t.footerText}</p>
@@ -39,6 +40,19 @@ export default function Footer() {
               <li key={c.id}>
                 <Link to={`/boutique?cat=${c.id}`} className="text-cream-200/80 transition hover:text-honey-300">
                   {tr(c.name)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-display text-lg font-semibold text-honey-300">{t.legal.title}</h3>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            {(Object.keys(legalPaths) as LegalId[]).map((id) => (
+              <li key={id}>
+                <Link to={legalPaths[id]} className="text-cream-200/80 transition hover:text-honey-300">
+                  {t.legal[id]}
                 </Link>
               </li>
             ))}

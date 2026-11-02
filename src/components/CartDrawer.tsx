@@ -7,6 +7,8 @@ import { useLang } from "../lib/i18n";
 import { orderMessage, waLink, type Customer } from "../lib/whatsapp";
 import ProductImage from "./ProductImage";
 import { WhatsAppIcon } from "./Icons";
+import { config, deliveryFor } from "../lib/config";
+import { legalPaths } from "../data/legal";
 
 const CUSTOMER_KEY = "ts-customer";
 
@@ -38,6 +40,10 @@ export default function CartDrawer() {
   const { t, tr, price, lang, isRtl } = useLang();
   const [customer, setCustomer] = useState<Customer>(loadCustomer);
   const [error, setError] = useState(false);
+  // Law 09-08 / 31-08: consent must be an explicit, unticked-by-default choice
+  const [agreed, setAgreed] = useState(false);
+  const [consentError, setConsentError] = useState(false);
+  const delivery = deliveryFor(total);
 
   useEffect(() => {
     try {
@@ -65,11 +71,16 @@ export default function CartDrawer() {
       setError(true);
       return;
     }
+    if (!agreed) {
+      setConsentError(true);
+      return;
+    }
     const text = orderMessage({
       items: items.map((i) => ({ name: tr(i.product.name), size: i.size, qty: i.qty, price: i.price })),
       customer,
       lang,
       formatPrice: price,
+      delivery,
     });
     window.open(waLink(text), "_blank", "noopener");
   };
@@ -167,15 +178,50 @@ export default function CartDrawer() {
                       <textarea className={input + " resize-none"} rows={2} placeholder={t.note} {...field("note")} />
                     </div>
                     {error && <p className="mt-2 text-sm font-medium text-red-600">{t.required}</p>}
+                    <p className="mt-3 text-xs leading-relaxed text-plum-600/80">{t.privacyNotice}</p>
                   </div>
                 </div>
 
                 <div className="border-t border-plum-900/10 bg-white px-5 pb-6 pt-4">
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-plum-600">{t.subtotal}</span>
-                    <span className="font-display text-2xl font-bold">{price(total)}</span>
-                  </div>
-                  <p className="mt-0.5 text-xs text-plum-600/70">{t.deliveryNote}</p>
+                  <dl className="space-y-1 text-sm">
+                    <div className="flex justify-between text-plum-600">
+                      <dt>{t.subtotal}</dt>
+                      <dd>{price(total)}</dd>
+                    </div>
+                    <div className="flex justify-between text-plum-600">
+                      <dt>{t.delivery}</dt>
+                      <dd>{delivery === null ? t.deliveryTbd : delivery === 0 ? t.deliveryFree : price(delivery)}</dd>
+                    </div>
+                    <div className="flex items-baseline justify-between pt-1 text-plum-900">
+                      <dt className="font-semibold">{t.total}</dt>
+                      <dd className="font-display text-2xl font-bold">{price(total + (delivery ?? 0))}</dd>
+                    </div>
+                  </dl>
+                  {config.freeDeliveryFrom > 0 && delivery !== 0 && (
+                    <p className="mt-1 text-xs text-honey-700">{t.freeFrom(price(config.freeDeliveryFrom))}</p>
+                  )}
+                  <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-sm text-plum-700">
+                    <input
+                      type="checkbox"
+                      checked={agreed}
+                      onChange={(e) => {
+                        setAgreed(e.target.checked);
+                        setConsentError(false);
+                      }}
+                      className="mt-0.5 size-4 shrink-0 accent-plum-800"
+                    />
+                    <span>
+                      {t.consent[0]}
+                      <Link to={legalPaths.cgv} onClick={() => setOpen(false)} className="font-semibold underline underline-offset-2">
+                        {t.consent[1]}
+                      </Link>
+                      {t.consent[2]}
+                      <Link to={legalPaths.privacy} onClick={() => setOpen(false)} className="font-semibold underline underline-offset-2">
+                        {t.consent[3]}
+                      </Link>
+                    </span>
+                  </label>
+                  {consentError && <p className="mt-1.5 text-sm font-medium text-red-600">{t.consentRequired}</p>}
                   <button
                     onClick={send}
                     className="mt-4 flex w-full items-center justify-center gap-2.5 rounded-full bg-wa py-4 text-base font-bold text-white shadow-[0_12px_28px_-10px_rgba(37,211,102,.7)] transition hover:bg-wa-dark active:scale-[.98]"

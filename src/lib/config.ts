@@ -16,6 +16,24 @@ export const config = {
   instagram: env.VITE_INSTAGRAM_URL || "",
   city: env.VITE_STORE_CITY || "Tiznit, Maroc",
   currency: env.VITE_CURRENCY || "DH",
+  // Flat delivery fee in DH (0 = confirmed with the customer) and free-delivery threshold (0 = none)
+  deliveryFee: Number(env.VITE_DELIVERY_FEE) || 0,
+  freeDeliveryFrom: Number(env.VITE_FREE_DELIVERY_FROM) || 0,
+  // Seller identity for the legal pages (empty = shown as "to complete")
+  legal: {
+    name: env.VITE_LEGAL_NAME || "",
+    status: env.VITE_LEGAL_STATUS || "",
+    ice: env.VITE_LEGAL_ICE || "",
+    address: env.VITE_LEGAL_ADDRESS || "",
+    email: env.VITE_CONTACT_EMAIL || "",
+    cndp: env.VITE_CNDP_NUMBER || "",
+  },
 };
+
+/** Delivery fee for a basket subtotal, or null when it is confirmed later. */
+export function deliveryFor(subtotal: number): number | null {
+  if (config.freeDeliveryFrom && subtotal >= config.freeDeliveryFrom) return 0;
+  return config.deliveryFee || null;
+}
 
 export const telHref = `tel:${config.phoneDisplay.replace(/\s/g, "")}`;
