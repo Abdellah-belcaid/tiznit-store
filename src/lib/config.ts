@@ -14,7 +14,7 @@ export const config = {
   phoneDisplay: env.VITE_PHONE_DISPLAY || "06 40 50 88 54",
   facebook: env.VITE_FACEBOOK_URL || "",
   instagram: env.VITE_INSTAGRAM_URL || "",
-  city: env.VITE_STORE_CITY || "Tiznit, Maroc",
+  city: env.VITE_STORE_CITY || "Casablanca, Maroc",
   currency: env.VITE_CURRENCY || "DH",
   // Flat delivery fee in DH (0 = confirmed with the customer) and free-delivery threshold (0 = none)
   deliveryFee: Number(env.VITE_DELIVERY_FEE) || 0,
