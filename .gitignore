@@ -1,0 +1,11 @@
+node_modules
+dist
+
+# secrets / local settings
+.env
+.env.*
+!.env.example
+
+# tooling
+.vercel
+.claude/

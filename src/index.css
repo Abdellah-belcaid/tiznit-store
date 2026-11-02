@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-plum-950: #1d0f15;
+  --color-plum-900: #2b1620;
+  --color-plum-800: #3a1f2b;
+  --color-plum-700: #4e2b3b;
+  --color-plum-600: #6b3d52;
+  --color-plum-300: #c9a9b6;
+
+  --color-honey-200: #fbe3a6;
+  --color-honey-300: #f7d27e;
+  --color-honey-400: #f3c053;
+  --color-honey-500: #f0b13b;
+  --color-honey-600: #d9951c;
+  --color-honey-700: #a86d10;
+
+  --color-cream-50: #fffbf4;
+  --color-cream-100: #fbf4e6;
+  --color-cream-200: #f3e5c9;
+  --color-cream-300: #e8d3aa;
+
+  --color-leaf-600: #4f7a3a;
+  --color-wa: #25d366;
+  --color-wa-dark: #128c4b;
+
+  --font-display: "Fraunces", "El Messiri", serif;
+  --font-sans: "Manrope", "Tajawal", system-ui, sans-serif;
+
+  --animate-marquee: marquee 38s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+/* Arabic gets Arabic-first font stacks */
+html[lang="ar"] {
+  --font-display: "El Messiri", "Fraunces", serif;
+  --font-sans: "Tajawal", "Manrope", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-cream-50);
+  color: var(--color-plum-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+
+/* Honeycomb pattern used on dark sections */
+.honeycomb {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 56 98'%3E%3Cpath d='M28 66 0 50V17L28 1l28 16v33L28 66Zm0 32V66m0-65V-16' fill='none' stroke='%23f0b13b' stroke-opacity='.09' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+:focus-visible {
+  outline: 2px solid var(--color-honey-500);
+  outline-offset: 2px;
+}
